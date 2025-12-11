@@ -1,6 +1,6 @@
-## :package: Banco de Dados para E-commerce (PostgreSQL) 
+## :package: Banco de Dados para E-commerce (PostgreSQL)
 
-Este repositório apresenta a criação de um banco de dados para a empresa fictícia Vendedor Aliado, uma loja que decidiu abrir seu próprio e-commerce. Para viabilizar essa migração, foi desenvolvido um banco de dados simples, focado em demonstrar domínio de PostgreSQL e entendimento das estruturas comuns em sistemas de comércio eletrônico.
+Este repositório apresenta a criação de um banco de dados para a empresa fictícia **Vendedor Aliado**, uma loja que decidiu abrir seu próprio e-commerce. Para viabilizar essa migração, foi desenvolvido um banco de dados simples, focado em demonstrar domínio de PostgreSQL e entendimento das estruturas comuns em sistemas de comércio eletrônico.
 
 O objetivo aqui não é montar um banco de produção completo — até porque isso exigiria análise de requisitos, regras de negócio e várias definições de arquitetura — mas sim entregar um modelo funcional, didático e tecnicamente sólido.
 
@@ -27,14 +27,14 @@ O objetivo aqui não é montar um banco de produção completo — até porque i
   - **Funções auxiliares**
     - `atualiza_totais_compra()` — recalcula total bruto e líquido da compra.  
     - `valida_carrinho_nao_faturado()` — impede alterações em carrinho já faturado.  
-    - `bloqueia_alteracao_carrinho_faturado()` — trava atualizações indevidas.  
-    - `valida_carrinho_faturado_para_pedido()` — validação antes de gerar pedido.
+    - `bloqueia_alteracao_carrinho_faturado()` — bloqueia atualizações indevidas.  
+    - `valida_carrinho_faturado_para_pedido()` — valida antes de gerar um pedido.
 
   - **Triggers relacionados**
-    - `trg_compra_item_totais` — dispara recálculo ao inserir/alterar compra_item.  
-    - `trg_carrinho_prod_insert` — valida e atualiza carrinho ao inserir itens.  
-    - `trg_carrinho_before_update` — bloqueia alterações indevidas em carrinho.  
-    - `trg_pedido_valida_carrinho` — garante consistência ao criar pedido.
+    - `trg_compra_item_totais` — dispara o recálculo ao inserir ou alterar um *compra_item*.  
+    - `trg_carrinho_prod_insert` — valida e atualiza o carrinho ao inserir itens.  
+    - `trg_carrinho_before_update` — bloqueia alterações indevidas em carrinhos faturados.  
+    - `trg_pedido_valida_carrinho` — garante consistência ao criar um pedido.
 
 - **Views**
   - `produto_maior_lucro_avista`  
@@ -48,31 +48,32 @@ O objetivo aqui não é montar um banco de produção completo — até porque i
   - `produto_favorito`  
   - `produtos_mais_devolvidos`
 
-### 📂 Estrutura do projeto:
+### 📂 Estrutura do projeto
 
-- contexto.md -> explicação do enunciado formulado para direcionar a ciração do banco de dados.
-- /modelo-fisico-simplificado -> pasta com o modelo-fisico-simplificado em pdf e png.
-- /sql -> pasta com os scripts sql 
-    - 'create.sql' - criação do banco e tabelas.
-    - 'seeds.sql' - dados iniciais.
-    - 'others.sql' - triggers, procedures, views e demais objetos.
+- `contexto.md` → explicação do enunciado formulado para direcionar a criação do banco de dados.  
+- `/modelo-fisico-simplificado` → pasta com o modelo físico simplificado em PDF e PNG.  
+- `/sql` → pasta com os scripts SQL:  
+  - `create.sql` — criação do banco e tabelas.  
+  - `seeds.sql` — dados iniciais.  
+  - `others.sql` — triggers, procedures, views e demais objetos.
 
-### ▶️ Como rodar:
+### ▶️ Como rodar
 
-1. Acesse o PgAdmin ou Dbeaver 
-2. Execute os scripts na ordem: 'create.sql' -> 'others.sql' -> 'seeds.sql' - há alguns comentários/instruções em alguns lugares dos arquivos.
+1. Acesse o PgAdmin ou DBeaver.  
+2. Execute os scripts na ordem: `create.sql` → `others.sql` → `seeds.sql`.  
+   Há comentários e instruções dentro dos arquivos.
 
-### ⚒️ Tecnologias usadas:
+### ⚒️ Tecnologias usadas
 
-- PostgreSQL 16.11.
-- Dbeaver - SGBD e editor SQL.
-- LucidChart - DER.
-- Git - versioanamento.
-- Vs-Code - organização do projeto e arquivos.
-- ChatGPT - apoio pontutal(seeds, comentários e auxílio técnico).
+- PostgreSQL 16.11  
+- DBeaver — SGBD e editor SQL  
+- LucidChart — DER  
+- Git — versionamento  
+- VS Code — organização do projeto e arquivos  
+- ChatGPT — apoio pontual (seeds, comentários e auxílio técnico)
 
-### 💡 Possiveis melhorias:
+### 💡 Possíveis melhorias
 
-- Aumentar a complexidade das entidades (datas, estados, novas relações, etc.).
-- Criar mais triggers, procedures e views para maior controle sobre estoque, produto, movimentações financeiras etc.
+- Aumentar a complexidade das entidades (datas, estados, novas relações etc.).  
+- Criar mais triggers, procedures e views para maior controle sobre estoque, produtos e movimentações financeiras.  
 - Evoluir o modelo para algo mais próximo de um ambiente real de e-commerce.
