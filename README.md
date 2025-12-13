@@ -4,6 +4,7 @@ Este repositório apresenta a criação de um banco de dados para a empresa fict
 
 O objetivo aqui não é montar um banco de produção completo — até porque isso exigiria análise de requisitos, regras de negócio e várias definições de arquitetura — mas sim entregar um modelo funcional, didático e tecnicamente sólido.
 
+---
 ### ✅ O que foi feito
 
 - **Criação das tabelas essenciais de um e-commerce**  
@@ -48,6 +49,7 @@ O objetivo aqui não é montar um banco de produção completo — até porque i
   - `produto_favorito`  
   - `produtos_mais_devolvidos`
 
+---
 ### 📂 Estrutura do projeto
 
 - `contexto.md` → explicação do enunciado formulado para direcionar a criação do banco de dados.  
@@ -57,12 +59,14 @@ O objetivo aqui não é montar um banco de produção completo — até porque i
   - `seeds.sql` — dados iniciais.  
   - `others.sql` — triggers, procedures, views e demais objetos.
 
+---
 ### ▶️ Como rodar
 
 1. Acesse o PgAdmin ou DBeaver.  
 2. Execute os scripts na ordem: `create.sql` → `others.sql` → `seeds.sql`.  
    Há comentários e instruções dentro dos arquivos.
 
+--
 ### ⚒️ Tecnologias usadas
 
 - PostgreSQL 16.11  
